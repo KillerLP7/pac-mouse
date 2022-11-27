@@ -19,7 +19,7 @@ header {
     text-align: center;
 }
 
-main {
+main div{
     
     background-color: rgba(0, 0, 0, 0.000001);
     background-size: cover;
