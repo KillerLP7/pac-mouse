@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oberstufenprojekt</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <div id="mainDiv">
+        <input type="button" id="btnDumm" value="DummerButton"/>
+        <button id="btnDuemmer">Dümmererrrrrr Button</button>
+        <input type="text" id="dummerText"/> 
+    </div>
+    <div id="pizza" class="pizza">
+        <button id="btnPizza">Pizza</button>
+    </div>
+</body>
+</html>

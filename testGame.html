@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        canvas {
+            border-style: solid;
+            border-width: 1px;
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script>
+        // Code that should be run, when the website is opened (might not be fully loaded yet)
+        var pressed_stack = [];
+        var ispressed = {};
+        var render_thread = null;
+        var gameLogic_thread = null;
+
+        var board_height = null;
+        var board_width = null;
+        var field_dimension = null;
+        var canvas_height = null;
+        var canvas_width = null;
+
+        // Leer=0 Punkt=1 Wand=2 inv_Wand=3 Item=4 Spawn=-1
+        var board = [
+            [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2],
+            [2,1,1,1,1,1,1,1,1,1,2,1,1,1,2,3,1,1,1,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,3,1,1,1,1,2],
+            [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2],
+            [2,1,1,1,1,1,1,1,1,1,2,1,1,1,2,3,1,1,1,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,3,1,1,1,1,2],
+            [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2],
+            [2,1,1,1,1,1,1,1,1,1,2,1,1,1,2,3,1,1,1,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,3,2,2,2,1,2],
+            [2,1,1,1,1,1,1,1,1,1,1,1,1,1,2,3,1,1,1,1,2]
+            
+        ];
+
+        function initializeBoard() {
+            console.log("board len " + board.length);
+            console.log("board width " + board[0].length);
+            board_height = board.length;
+            board_width = board[0].length;
+            var field_height = Math.trunc($("#game_div").height() / board_height);
+            var field_width = Math.trunc($("#game_div").width() / board_width);
+            if (field_height < field_width) {
+                field_dimension = field_height;
+            } else {
+                field_dimension = field_width;
+            }
+            canvas_height = field_dimension * board_height;
+            canvas_width = field_dimension * board_width;
+            canvas = $("#game_canvas");
+            canvas.height(canvas_height + "px");
+            canvas.width(canvas_width + "px");
+            ctx = canvas[0].getContext('2d');
+            ctx.canvas.height = canvas_height;
+            ctx.canvas.width = canvas_width;
+
+            drawBoard();
+        }
+
+        function getCurrentDirection() {
+            return pressed_stack[pressed_stack.length-1];
+        }
+
+        function getPosition(pos) {
+
+        }
+
+        function drawBoard() {
+            console.log("draw");
+            console.log($("#game_canvas").height());
+            console.log($("#game_canvas").width());
+            console.log(board_height);
+            console.log(board_width);
+            console.log(field_dimension);
+
+            var canvas = $("#game_canvas");
+		    var ctx = canvas[0].getContext('2d');
+
+            var h = 0;
+            var l = 0;
+            var current = 0;
+            for (let i = 0; i < board_height; i++) {
+                l = 0
+                for (let j = 0; j < board_width; j++) {
+                    current = board[i][j];
+                    if (current == 0) {
+                        ctx.fillStyle = "#FFFFFF";
+                    }
+                    if (current == 1) {
+                        ctx.fillStyle = "#FFF200";
+                    }
+                    if (current == 2) {
+                        ctx.fillStyle = "#A349A4";
+                    }
+                    if (current == 3) {
+                        ctx.fillStyle = "#FFAEC9";
+                    }
+                    if (current == 4) {
+                        ctx.fillStyle = "#FFC90E";
+                    }
+                    if (current == -1) {
+                        ctx.fillStyle = "#000000";
+                    }
+
+                    ctx.fillRect(l,h, l + field_dimension, h + field_dimension);
+                    console.log("filled");
+
+                    l += field_dimension
+                }
+                h += field_dimension;
+            }
+        }
+
+        $(document).ready(function() {
+            // Code that should be run, when the website is fully loaded
+            console.log("document ready");
+
+            console.log($("#game_canvas").width());
+            console.log($("#game_canvas").height());
+
+            // event that is run when a button is pressed down
+            $("body").keydown(function(event) {
+                if (ispressed[event.which]) {
+                    return;
+                }
+                ispressed[event.which] = true;
+
+                // console.log("keydown:" + event.which);
+
+                // 37=ArrowKeyLeft 65=a
+                if (event.which == 37 || event.which == 65) {
+                    initializeBoard();
+                    pressed_stack.push("left");
+                }
+                // 38=ArrowKeyUp 87=w
+                if (event.which == 38 || event.which == 87) {
+                    pressed_stack.push("up");
+                }
+                // 39=ArrowKeyRight 68=d
+                if (event.which == 39 || event.which == 68) {
+                    pressed_stack.push("right");
+                }
+                // 40=ArrowKeyDown 83=s
+                if (event.which == 40 || event.which == 83) {    
+                    pressed_stack.push("down");       
+                }
+
+                console.log("stack:" + pressed_stack);
+                console.log("last:" + pressed_stack[pressed_stack.length-1]);
+            });
+
+            // event that is run when a button is released
+            $("body").keyup(function(evnet) {
+                delete ispressed[event.which];
+                // console.log("keydown:" + event.which);
+
+                // 37=ArrowKeyLeft 65=a
+                if (event.which == 37 || event.which == 65) {
+                    var index = pressed_stack.indexOf("left");
+                    if (index > -1) {
+                        pressed_stack.splice(index, 1);
+                    }
+                }
+                // 38=ArrowKeyUp 87=w
+                if (event.which == 38 || event.which == 87) {
+                    var index = pressed_stack.indexOf("up");
+                    if (index > -1) {
+                        pressed_stack.splice(index, 1);
+                    }
+                }
+                // 39=ArrowKeyRight 68=d
+                if (event.which == 39 || event.which == 68) {
+                    var index = pressed_stack.indexOf("right");
+                    if (index > -1) {
+                        pressed_stack.splice(index, 1);
+                    }
+                }
+                // 40=ArrowKeyDown 83=s
+                if (event.which == 40 || event.which == 83) { 
+                    var index = pressed_stack.indexOf("down");
+                    if (index > -1) {
+                        pressed_stack.splice(index, 1);
+                    }
+                }
+
+                console.log("stack:" + pressed_stack);
+                console.log("last:" + pressed_stack[pressed_stack.length-1]);
+            });
+
+            render_thread = setInterval(function() {
+                //console.log("render");
+            }, 10);
+
+            gameLogic_thread = setInterval(function() {
+                //console.log("logic");
+            }, 60)
+        });
+    </script>
+</head>
+<body>
+    <main>
+        <div id="game_div">
+            <canvas id="game_canvas">
+            </canvas>
+        </div>
+    </main>
+</body>
+</html>

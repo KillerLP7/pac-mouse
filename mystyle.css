@@ -1,0 +1,12 @@
+
+#mainDiv {
+    display: flex;
+}
+
+.pizza {
+    position: fixed;
+    width: 40px;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all .15s;
+}
