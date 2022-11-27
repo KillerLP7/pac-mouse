@@ -33,6 +33,5 @@ main div {
 }
 
 canvas {
-    height: fit-content;
-    width: fit-content;
+    padding-left: 10px;
 }
