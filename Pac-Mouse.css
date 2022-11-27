@@ -27,11 +27,8 @@ main div {
     background-position: center;
     margin-right: auto;
     margin-left: auto;
-    height: 729px;
+    height: 720px;
     width: 629px;
 
 }
 
-canvas {
-    padding-left: 10px;
-}
