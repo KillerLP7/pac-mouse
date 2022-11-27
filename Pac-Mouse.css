@@ -21,20 +21,10 @@ header {
 
 main div {
     
-    background-color: rgba(0, 0, 0, 0.842);
+    background-color: rgba(0, 0, 0, 0);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     margin-right: auto;
     margin-left: auto;
-    height: 729px;
-    width: 629px;
-}
-
-canvas {
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-
 }
