@@ -44,7 +44,7 @@ main {
 
 .gameButton {
 
-    background-image: url(images/Spielvorschau.png);
+    background-image: url(images/Game\ Thumbnail.PNG);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -161,6 +161,7 @@ button {
     background-color: orange;
     width: 500px;
     height: 100px;
+    border: 2px;
 }
 
 main table {
@@ -172,6 +173,7 @@ main table {
     clip-path: polygon(100% 0, 0 50%, 100% 100%);
     height: 100px;
     width: 100px;
+    border: 2px;
     
 }
 
@@ -180,13 +182,18 @@ main table {
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     height: 100px;
     width: 100px;
+    border: 2px;
 }
 
 .mapbg {
-    background-image: url(images/Classic\ Map\ Skizze.PNG);
+    background-image: url(images/Classic\ Map\ Generated.PNG);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
 }
 
+.biggap {
+    padding-left: 100px;
+    padding-right: 100px;
+}
