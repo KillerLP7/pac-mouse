@@ -121,7 +121,8 @@ footer {
 .dotbuttons {
 
     background-color: yellow;
-    border: 0;
+    border: solid;
+    border: 10px;
     width: 100px;
     height: 100px;
     clip-path: circle(50% at 50% 50%);
