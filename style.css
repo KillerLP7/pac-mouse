@@ -184,6 +184,7 @@ main table {
     height: 100px;
     width: 100px;
     border: 10px;
+    margin-right: auto;
 }
 
 .mapbg {
@@ -195,8 +196,8 @@ main table {
 }
 
 .biggap {
-    padding-left: 500px;
-    padding-right: 500px;
+    padding-left: auto;
+    padding-right: auto;
 }
 
 .rleft:hover {
