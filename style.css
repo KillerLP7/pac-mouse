@@ -62,23 +62,34 @@ main button {
 
 tr {
 
-    margin-right: auto;
-    margin-left: auto;
+    /*margin-right: auto;
+    margin-left: auto;*/
 
 }
 
-th {
+.button_wrapper {
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+}
 
-    padding-left: 15px;
-    padding-right: 15px;
+th {
+    	
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    width: 100px;
 
 }
 
 table {
 
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 
+}
+
+table tbody {
+    width: 100%;
+    padding: 10px;
 }
 
 .essam {
@@ -129,12 +140,7 @@ footer {
 
 }
 
-.mouse {
 
-    height: 250px;
-    width: 250px;
-
-}
 
 .eightbit {
 
@@ -160,7 +166,7 @@ button {
 
 .lvlbutton {
     background-color: orange;
-    width: 500px;
+    width: clamp(370px, 70%, 500px);
     height: 100px;
     border: 10px;
 }
@@ -168,6 +174,72 @@ button {
 main table {
     padding-top: 100px;
 }
+
+
+/*MAIN PAGE*/
+.main_wrapper {
+    padding: 0px 10px;
+    width: 100vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.main_wrapper div img {
+    width: clamp(100px, 80%, 350px);
+    aspect-ratio: 9/8;
+}
+
+@media only screen and (max-width: 620px) {
+
+    .eightbit {
+        font-size: 14vw;
+    }
+
+    main {
+        padding: 0;
+        margin-top: -30px;
+    }
+
+    .main_wrapper {
+        padding: 0px 0px;
+        flex-direction: column;
+    }
+
+    .main_wrapper div img {
+        aspect-ratio: 9/8;
+        width: 30vw;
+    }
+
+    .mouse.mouse_img {
+        margin-bottom: 10px;
+        transform: rotate(90deg);
+    }
+
+    .main_wrapper div a button {
+        font-size: 12px;
+    }
+}
+
+.main_wrapper div a button {
+    /*width: clamp(50px, 70%, 100px);*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    min-width: 70px;
+    max-width: 100px;
+    width: 10vw;
+    height: 10vw;
+    min-height: 70px;
+    max-height: 100px;
+}
+.main_wrapper div a {
+    text-decoration: none;
+}
+
 
 .leftbutton {
     background-color: orange;
