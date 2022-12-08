@@ -1,3 +1,8 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 html {
 
     height: 100%;
@@ -10,7 +15,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .container {
@@ -34,11 +43,16 @@ nav {
 }
 
 main {
-
-    height: 400px;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    height: 100%;
     text-align: center;
-    padding-top: 80px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
 
 }
 
@@ -178,7 +192,9 @@ main table {
 
 /*MAIN PAGE*/
 .main_wrapper {
-    padding: 0px 10px;
+    margin-left: -10px;
+    overflow: hidden;
+    padding: 0px 5px;
     width: 100vw;
 
     display: flex;
@@ -188,8 +204,11 @@ main table {
 }
 
 .main_wrapper div img {
+    padding: 5px;
     width: clamp(100px, 80%, 350px);
-    aspect-ratio: 9/8;
+    object-position: center;
+    object-fit: cover;
+    user-select: none;
 }
 
 @media only screen and (max-width: 620px) {
@@ -200,7 +219,11 @@ main table {
 
     main {
         padding: 0;
-        margin-top: -30px;
+        margin-top: 35px;
+    }
+
+    body {
+        overflow: hidden;
     }
 
     .main_wrapper {
@@ -209,11 +232,12 @@ main table {
     }
 
     .main_wrapper div img {
-        aspect-ratio: 9/8;
-        width: 30vw;
+        min-width: 100px;
+        width: 22vw;
     }
 
     .mouse.mouse_img {
+        margin-top: 10px;
         margin-bottom: 10px;
         transform: rotate(90deg);
     }
