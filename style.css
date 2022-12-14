@@ -37,10 +37,14 @@ header {
 
 nav {
     background-color: rgba(0, 0, 0, 0.452);
-    text-align: center;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    /*text-align: center;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 14px 10px 14px;
+    border-radius: 6px;
 }
+
 
 main {
     overflow: hidden;
@@ -48,12 +52,18 @@ main {
     left: 0px;
     position: absolute;
     height: 100%;
+    width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
+    z-index: 1;
+}
 
+.main_index {
+    position: relative;
+    width: 100%;
 }
 
 .gameButton {
@@ -134,13 +144,31 @@ table tbody {
 
 }
 
-footer {
+.fs_wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+footer, .fs {
     background-color: rgba(0, 0, 0, 0);
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    z-index: 2;
+}
 
+.fs {
+    margin-top: 100px;
+    width: clamp(370px, 70%, 500px);
+}
+
+footer.status {
+    width: 100%;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dotbuttons {
@@ -220,6 +248,10 @@ main table {
     main {
         padding: 0;
         margin-top: 35px;
+    }
+
+    .fs {
+        margin-top: 400px;
     }
 
     body {
@@ -306,4 +338,10 @@ main table {
 
 .bright:hover {
     src: url(images/Game\ Sprites/Singleplayer/Singleplayer-Blue-Left.png);
+}
+
+iframe {
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
 }
