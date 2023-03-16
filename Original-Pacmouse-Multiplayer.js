@@ -1,35 +1,12 @@
 const canvas = document.querySelector('canvas')
 const scoreEl = document.querySelector('#scoreEl')
+const body = document.getElementByClassName('body')
+
 //c = context
 const c = canvas.getContext('2d')
 
-//canvas.width = window.innerWidth
-//canvas.height = window.innerHeight
-
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-
-window.dispatchEvent(new Event('resize'));
-
-/*
-function resizeCanvas() {
-  //canvas.width = Math.max(window.innerWidth * 0.8, 8000); // Set a maximum width of 800 pixels
-  //canvas.height = Math.max(window.innerHeight * 0.8, 6000); // Set a maximum height of 600 pixels
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-*/
-
-
-//resizeCanvas();
-
-//window.addEventListener("resize", resizeCanvas);
-
-
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 
 class Boundary {
     static width = 40
@@ -256,15 +233,30 @@ const keys = {
     }
 }
 
+const keys2 = {
+    i: {
+        pressed: false
+    },
+    j: {
+        pressed: false
+    },
+    k: {
+        pressed: false
+    },
+    l: {
+        pressed: false
+    }
+}
+
 let lastKey = ''
 let score = 0
 
-//0 = Empty, 1 = Pellet, 2 = Wall, 3 = PowerUP, 4 = Spawn, 5 = GHostspawn, 6 = Door shut
+//0 = Empty, 1 = Pellet, 2 = Wall, 3 = PowerUP, 4 = Spawn
 const map = [
             [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
             [2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,2],
             [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,1,2,2,2,1,2],
-            [2,3,2,2,2,1,2,2,2,1,2,1,2,2,2,1,2,2,2,3,2],
+            [2,4,2,2,2,1,2,2,2,1,2,1,2,2,2,1,2,2,2,4,2],
             [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,1,2,2,2,1,2],
             [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
             [2,1,2,2,2,1,2,1,2,2,2,2,2,1,2,1,2,2,2,1,2],
@@ -272,16 +264,16 @@ const map = [
             [2,1,1,1,1,1,2,1,1,1,2,1,1,1,2,1,1,1,1,1,2],
             [2,2,2,2,2,1,2,2,2,0,2,0,2,2,2,1,2,2,2,2,2],
             [2,2,2,2,2,1,2,0,0,0,0,0,0,0,2,1,2,2,2,2,2],
-            [2,2,2,2,2,1,2,0,2,2,6,2,2,0,2,1,2,2,2,2,2],
-            [2,2,2,2,2,1,2,0,2,2,0,2,2,0,2,1,2,2,2,2,2],
-            [0,0,0,0,2,1,0,0,2,2,5,2,2,0,0,1,2,0,0,0,0],
+            [2,2,2,2,2,1,2,0,2,2,3,2,2,0,2,1,2,2,2,2,2],
+            [2,2,2,2,2,1,2,0,2,2,3,2,2,0,2,1,2,2,2,2,2],
+            [3,3,3,3,2,1,0,0,2,3,3,3,2,0,0,1,2,3,3,3,3],
             [2,2,2,2,2,1,2,0,2,2,2,2,2,0,2,1,2,2,2,2,2],
             [2,2,2,2,2,1,2,0,0,0,0,0,0,0,2,1,2,2,2,2,2],
             [2,2,2,2,2,1,2,0,2,2,2,2,2,0,2,1,2,2,2,2,2],
             [2,2,2,2,2,1,2,0,2,2,2,2,2,0,2,1,2,2,2,2,2],
             [2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,2],
             [2,1,2,2,2,1,2,2,2,1,2,1,2,2,2,1,2,2,2,1,2],
-            [2,3,1,1,2,1,1,1,1,1,4,1,1,1,1,1,2,1,1,3,2],
+            [2,4,1,1,2,1,1,1,1,1,-1,1,1,1,1,1,2,1,1,4,2],
             [2,2,2,1,2,1,2,1,2,2,2,2,2,1,2,1,2,1,2,2,2],
             [2,2,2,1,2,1,2,1,2,2,2,2,2,1,2,1,2,1,2,2,2],
             [2,1,1,1,1,1,2,1,1,1,2,1,1,1,2,1,1,1,1,1,2],
@@ -305,8 +297,8 @@ const ghosts = [
             y: Boundary.height + 1
         },
         velocity: {
-            x: 0,
-            y: -Ghost.speed
+            x: Ghost.speed,
+            y: 0
         },
         direction: 'downR',
         id: 0,
@@ -318,8 +310,8 @@ const ghosts = [
             y: Boundary.height + 1
         },
         velocity: {
-            x: 0,
-            y: -Ghost.speed
+            x: Ghost.speed,
+            y: 0
         },
         direction: 'downO',
         id: 1,
@@ -331,8 +323,8 @@ const ghosts = [
             y: Boundary.height + 1
         },
         velocity: {
-            x: 0,
-            y: -Ghost.speed
+            x: Ghost.speed,
+            y: 0
         },
         direction: 'downB',
         id: 2,
@@ -344,8 +336,8 @@ const ghosts = [
             y: Boundary.height + 1
         },
         velocity: {
-            x: 0,
-            y: -Ghost.speed
+            x: Ghost.speed,
+            y: 0
         },
         direction: 'downP',
         id: 3,
@@ -353,17 +345,34 @@ const ghosts = [
     }),
 ]
 
-const player = new Player({
+const player = 
+    new Player({
+        position: {
+            x: Boundary.width + 1,
+            y: Boundary.height + 1
+        },
+        velocity: {
+            x: 0,
+            y: 0
+        },
+        direction: 'down'
+    
+    })
+   --
+
+
+
+/*const player2 = new Player({
     position: {
-        x: Boundary.width * 18 + 1,
-        y: Boundary.height * 20 + 1
+        x: Boundary.width * 19 + 1,
+        y: Boundary.height * 25 + 1
     },
     velocity: {
         x: 0,
         y: 0
     },
     direction: 'down'
-})
+})*/
 
 function createImage(src) {
     const image = new Image()
@@ -371,75 +380,53 @@ function createImage(src) {
     return image
 }
 
-map.forEach((row, i) => {
-    row.forEach((symbol, j) => {
-        switch (symbol) {
-            case 2:
-                boundaries.push(
-                    new Boundary({
-                        position: {
-                            x: Boundary.width * j,
-                            y: Boundary.height * i
-                        }
-                    })
-                )
-                break;
-                case 1:
-                pellets.push(
-                    new Pellet({
-                        position: {
-                            x: Boundary.width * j + 1,
-                            y: Boundary.height * i + 1
-                        },
-                        image: createImage('images/Game Sprites/Objects/Pellet.png')
-                    })
-                )
-                break;
-                case 3:
-                powerUps.push(
-                    new PowerUp({
-                        position: {
-                            x: Boundary.width * j + 1,
-                            y: Boundary.height * i + 1
-                        },
-                        image: createImage('images/Game Sprites/Objects/PowerUp.png')
-                    })
-                )
-                break;
-                case 4:
-                player.position.x = Boundary.width * j + 1
-                player.position.y = Boundary.height * i + 1
-                break;
-                case 5:
-                ghosts[0].position.x = Boundary.width * j + 1
-                ghosts[0].position.y = Boundary.height * i + 1
-                ghosts[1].position.x = Boundary.width * j + 1
-                ghosts[1].position.y = Boundary.height * i + 1
-                ghosts[2].position.x = Boundary.width * j + 1
-                ghosts[2].position.y = Boundary.height * i + 1
-                ghosts[3].position.x = Boundary.width * j + 1
-                ghosts[3].position.y = Boundary.height * i + 1
-                break;
+body.addEventListener('resize', () => reload());
 
-                case 6:
-                    setInterval(() => {
-                        boundaries.push(
-                            new Boundary({
-                                position: {
-                                    x: Boundary.width * j,
-                                    y: Boundary.height * i
-                                }
-                            })
-                        )
-                        //console.log(ghost.scared)
-                    }, 1000)
-                break;
-        
-            default:
-                break;
-        }
+function reload() {
+    map.forEach((row, i) => {
+        row.forEach((symbol, j) => {
+            switch (symbol) {
+                case 2:
+                    boundaries.push(
+                        new Boundary({
+                            position: {
+                                x: Boundary.width * j,
+                                y: Boundary.height * i
+                            }
+                        })
+                    )
+                    break;
+                    case 1:
+                    pellets.push(
+                        new Pellet({
+                            position: {
+                                x: Boundary.width * j + 1,
+                                y: Boundary.height * i + 1
+                            },
+                            image: createImage('images/Game Sprites/Objects/Pellet.png')
+                        })
+                    )
+                    break;
+                    case 4:
+                    powerUps.push(
+                        new PowerUp({
+                            position: {
+                                x: Boundary.width * j + 1,
+                                y: Boundary.height * i + 1
+                            },
+                            image: createImage('images/Game Sprites/Objects/PowerUp.png')
+                        })
+                    )
+                    break;
+            
+                default:
+                    break;
+            }
+        })
     })
-})
+}
+
+
 
 function pacmouseCollidesWithWall({
     pacmouse,
