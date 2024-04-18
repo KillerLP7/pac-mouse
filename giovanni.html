@@ -13,6 +13,13 @@
             animation: rainbowBackground 10s infinite;
             background-size: 400% 400%;
         }
+
+        @keyframes rainbowBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         header {
             background-color: #333;
             color: #fff;
@@ -33,6 +40,16 @@
             text-decoration: none;
             margin-right: 20px;
         }
+
+        body.dark-mode {
+            background-color: #000;
+            color: #fff;
+        }
+
+        body.dark-mode header, body.dark-mode footer {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+        }
+
         .hero {
             background-image: url('BakaGames.png');
             background-size: contain;
@@ -103,6 +120,15 @@
             margin-left: 10px;
         }
 
+        .toggle-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         footer {
             background-color: #333;
             color: #fff;
@@ -122,6 +148,7 @@
     <header>
         <img class="logo" src="BakaGamesLogo.png" alt="Baka Games">
         <nav>
+            <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Night Mode</button>
             <span class="volume-label" id="volume-label">50%</span>
             <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
             <a href="#about">About Me</a>
@@ -169,9 +196,13 @@
     <section id="customers" class="customers">
         <h2>Customers</h2>
         <!-- Add phrases and pictures from customers here -->
-        <p>Lisa: "I worked there 10/10"</p>
-        <p>WeebLover69: "I Love how they made the jiggly physics 11/10"</p>
-        <p>Gerrit: "The Games look nice, but the Code is Horrible 3/10"</p>
+        <p>Lisa: "I worked there! 10/10"</p>
+        <p>WeebLover69: "I Love how they made the jiggly physics." 11/10</p>
+        <p>Gerrit: "The Games look nice, but the Code is Horrible." 3/10</p>
+        <p>Magnus: "The Minesweeper Game had no MINES!" -1/10</p>
+        <p>Robin: "Criiiiiiiiiiiiiiiiiiinnnnnnggggeee, but I like it." 7/10</p>
+        <p>Alan: "Also als Programmer und Artist, würde ich sagen du hast dein bestes gegeben." 5/10</p>
+        <p>Detree: "Ich liebe diese innovative Schach version von Baka Games." ?/10</p>
     </section>
 
     <!-- Gallery Section -->
@@ -187,9 +218,11 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact</h2>
-        <embed src="https://www.google.com" style="width:500px; height: 300px;">
         <p>Email: lucca@mail.de</p>
+        <p>Discord: baka_taco</p>
+        <embed src="http://93.135.21.124/~lucca/pac-mouse/giovanni.html" style="width:500px; height: 500px;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.7796370649626!2d6.993871115563609!3d50.92779326073586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf26806c9447c5%3A0x9dd4de67741ff603!2sGeorg-Simon-Ohm-Berufskolleg!5e0!3m2!1sde!2sde!4v1671001398136!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://fritz.chessbase.com" style="width:760px;height:480px"></iframe>
         <!-- Add Google Map embed code here -->
     </section>
 
@@ -209,6 +242,10 @@
             audio.volume = volume;
             var volumePercentage = Math.round(volume * 100); // Convert volume to percentage
             volumeLabel.textContent = volumePercentage + '%';
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
         }
     </script>
 </body>
