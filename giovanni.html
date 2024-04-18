@@ -4,145 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baka Games</title>
-    <style>
-        /* CSS Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            animation: rainbowBackground 10s infinite;
-            background-size: 400% 400%;
-        }
-
-        @keyframes rainbowBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav {
-            display: inline-block;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-
-        body.dark-mode {
-            background-color: #000;
-            color: #fff;
-        }
-
-        body.dark-mode header, body.dark-mode footer {
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
-        }
-
-        .hero {
-            background-image: url('BakaGames.png');
-            background-size: contain;
-            text-align: center;
-            color: #000;
-            padding: 100px 0;
-        }
-        .about-me {
-            padding: 50px 20px;
-            padding-top: 120px;
-            text-align: center;
-        }
-        .services {
-            padding: 50px 20px;
-            padding-top: 120px;
-            text-align: center;
-        }
-        .customers {
-            padding: 50px 20px;
-            padding-top: 120px;
-            text-align: center;
-        }
-        .gallery {
-            padding: 50px 20px;
-            padding-top: 120px;
-            text-align: center;
-        }
-        .contact {
-            padding: 50px 20px;
-            padding-top: 120px;
-            text-align: center;
-        }
-        .logo {
-            width: 50px; /* Adjust the width as needed */
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .volume-slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100px;
-            height: 5px;
-            background: #d3d3d3;
-            outline: none;
-            opacity: 0.7;
-            -webkit-transition: .2s;
-            transition: opacity .2s;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background: #4caf50;
-            cursor: pointer;
-        }
-
-        .volume-slider::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
-            background: #4caf50;
-            cursor: pointer;
-        }
-
-        .volume-label {
-            margin-left: 10px;
-        }
-
-        .toggle-btn {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="BakaGames.css">
 </head>
 <body>
     <!-- Audio -->
-    <audio id= "bg-music" src="background_music.mp3" autoplay loop></audio>
+    <audio id="bg-music" src="background_music.mp3" autoplay loop></audio>
 
     <!-- Header -->
     <header>
@@ -161,7 +27,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Games made by real Bakas!</h1>
+        <h1 class="flame-text">Games made by real Bakas!</h1>
         <a href="#gallery">Explore Our Games</a>
     </section>
 
@@ -192,18 +58,107 @@
         </div>
     </section>
 
+    
+
+
     <!-- Customers Section -->
-    <section id="customers" class="customers">
-        <h2>Customers</h2>
-        <!-- Add phrases and pictures from customers here -->
-        <p>Lisa: "I worked there! 10/10"</p>
-        <p>WeebLover69: "I Love how they made the jiggly physics." 11/10</p>
-        <p>Gerrit: "The Games look nice, but the Code is Horrible." 3/10</p>
-        <p>Magnus: "The Minesweeper Game had no MINES!" -1/10</p>
-        <p>Robin: "Criiiiiiiiiiiiiiiiiiinnnnnnggggeee, but I like it." 7/10</p>
-        <p>Alan: "Also als Programmer und Artist, würde ich sagen du hast dein bestes gegeben." 5/10</p>
-        <p>Detree: "Ich liebe diese innovative Schach version von Baka Games." ?/10</p>
-    </section>
+<section id="customers" class="customers">
+    <h2>Customers</h2>
+    <!-- Customer Profiles -->
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 1">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>Lisa</h3>
+                <p>"I worked there! 10/10"</p>
+            </div>
+        </div>
+    </div>
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 2">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>WeebLover69</h3>
+                <p>"I Love how they made the jiggly physics." 11/10</p>
+            </div>
+        </div>
+    </div>
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 3">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>Gerrit</h3>
+                <p>"The Games look nice, but the Code is Horrible." 3/10</p>
+            </div>
+        </div>
+    </div>
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 4">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>Magnus</h3>
+                <p>"The Minesweeper Game had no MINES!" -1/10</p>
+            </div>
+        </div>
+    </div>
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 5">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>Robin</h3>
+                <p>"Criiiiiiiiiiiiiiiiiiinnnnnnggggeee, but I like it." 7/10</p>
+            </div>
+        </div>
+    </div>
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 6">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>Alan</h3>
+                <p>"Also als Programmer und Artist, würde ich sagen du hast dein bestes gegeben." 5/10</p>
+            </div>
+        </div>
+    </div>
+    <div class="customer-profile">
+        <div class="profile-widget">
+            <div class="profile-picture">
+                <!-- Customer profile picture -->
+                <img src="images/Lucca.png" alt="Customer 7">
+            </div>
+            <div class="profile-info">
+                <!-- Customer profile information -->
+                <h3>Detree</h3>
+                <p>"Ich liebe diese innovative Schach version von Baka Games." ?/10</p>
+            </div>
+        </div>
+    </div>
+    <!-- Add more customer profiles as needed -->
+</section>
+
 
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
@@ -216,15 +171,35 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <!-- Contact information and Discord + Email in one outline -->
+    <div class="orange-outline">
         <p>Email: lucca@mail.de</p>
         <p>Discord: baka_taco</p>
-        <embed src="http://93.135.21.124/~lucca/pac-mouse/giovanni.html" style="width:500px; height: 500px;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.7796370649626!2d6.993871115563609!3d50.92779326073586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf26806c9447c5%3A0x9dd4de67741ff603!2sGeorg-Simon-Ohm-Berufskolleg!5e0!3m2!1sde!2sde!4v1671001398136!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <iframe src="https://fritz.chessbase.com" style="width:760px;height:480px"></iframe>
-        <!-- Add Google Map embed code here -->
-    </section>
+    </div>
+    <!-- Container for embed and iframe -->
+    <div class="embed-iframe-container">
+        <!-- Embed -->
+        <div class="orange-outline embed">
+            <embed src="http://80.171.112.232/~lucca/pac-mouse/giovanni.html" style="width:100%; height: 600px;"></embed>
+        </div>
+        <!-- First iframe -->
+        <div class="orange-outline iframe">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.7796370649626!2d6.993871115563609!3d50.92779326073586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf26806c9447c5%3A0x9dd4de67741ff603!2sGeorg-Simon-Ohm-Berufskolleg!5e0!3m2!1sde!2sde!4v1671001398136!5m2!1sde!2sde" style="width:100%; height: 600px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <!-- Last iframe -->
+    <div class="orange-outline">
+        <iframe src="https://fritz.chessbase.com" style="width:100%; height: 480px;"></iframe>
+    </div>
+</section>
+
+
+
+
+
+
 
     <!-- Footer -->
     <footer>
@@ -233,20 +208,6 @@
         <p>Copyright © 2024 Baka Games. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Function to change the volume of the audio
-        function changeVolume(volume) {
-            console.log('Volume changed:', volume);
-            var audio = document.getElementById('bg-music');
-            var volumeLabel = document.getElementById('volume-label');
-            audio.volume = volume;
-            var volumePercentage = Math.round(volume * 100); // Convert volume to percentage
-            volumeLabel.textContent = volumePercentage + '%';
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-    </script>
+    <script src="BakaGames.js"></script>
 </body>
 </html>

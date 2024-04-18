@@ -1,0 +1,237 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: rainbowBackground 10s infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes rainbowBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+nav {
+    display: inline-block;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+body.dark-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+body.dark-mode header, body.dark-mode footer {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+}
+
+.logo {
+    width: 50px; /* Adjust the width as needed */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Flame Text Animation */
+.flame-text {
+    font-size: 3em;
+    color: rgb(255, 153, 0); /* Red color for flames */
+    text-shadow: 0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #ff8000, 0 0 70px #ff8000, 0 0 80px #ff8000, 0 0 100px #ff8000, 0 0 150px #ff8000; /* Multiple text-shadow layers for flame effect */
+    animation: flameAnimation 1s infinite alternate; /* Flame animation */
+}
+
+@keyframes flameAnimation {
+    0% { text-shadow: 0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #ff8000, 0 0 70px #ff8000, 0 0 80px #ff8000, 0 0 100px #ff8000, 0 0 150px #ff8000; }
+    100% { text-shadow: 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #f00, 0 0 50px #ff8000, 0 0 80px #ff8000, 0 0 90px #ff8000, 0 0 110px #ff8000, 0 0 180px #ff8000; }
+}
+
+.hero {
+    background-image: url('BakaGames.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #000;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Section Styles */
+.about-me,
+.services,
+.customers,
+.gallery,
+.contact {
+    padding: 50px 20px;
+    padding-top: 120px;
+    padding-bottom: 150px;
+    text-align: center;
+    box-shadow: 0 0 20px 5px rgba(255, 165, 0, 0.7); /* Neon orange box shadow */
+    outline: 1px solid rgba(255, 165, 0, 0.7);
+}
+
+/* Orange outline */
+.orange-outline {
+    border: 2px solid orange;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Container for embeds */
+.embed-container {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+}
+
+.embed-iframe-container {
+    display: flex;
+}
+
+.embed,
+.iframe {
+    width: 50%;
+}
+
+.iframe {
+    float: right;
+}
+
+
+
+
+.customer-profile {
+    margin-bottom: 30px; /* Add spacing between customer profiles */
+}
+
+.profile-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    border: 2px solid orange; /* Orange outline */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.profile-picture img {
+    width: 100px; /* Adjust size of profile picture */
+    height: 100px; /* Ensure profile picture is square */
+    border-radius: 50%; /* Make profile picture round */
+    margin-right: 20px; /* Add spacing between picture and text */
+}
+
+.profile-info {
+    flex: 1; /* Expand to fill remaining space */
+}
+
+.profile-info h3 {
+    margin: 0;
+    color: orange; /* Orange text color */
+}
+
+.profile-info p {
+    margin: 0;
+}
+
+
+
+.services ul {
+    list-style: none;
+    padding: 0;
+    text-align: center; /* Center the list */
+    position: relative; /* Add relative positioning to the parent */
+}
+
+.services ul li {
+    margin-bottom: 20px; /* Add spacing between list items */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+.services ul li span {
+    color: #666; /* Set text color */
+    text-align: left; /* Align text to the left */
+}
+
+.toggle-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #555;
+}
+
+.toggle-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #333;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 150px;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    border-radius: 5px;
+    transition: opacity 0.3s;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
