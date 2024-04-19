@@ -11,52 +11,94 @@
     <audio id="bg-music" src="background_music.mp3" autoplay loop></audio>
 
     <!-- Header -->
-    <header>
-        <img class="logo" src="BakaGamesLogo.png" alt="Baka Games">
-        <nav>
-            <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Night Mode</button>
-            <span class="volume-label" id="volume-label">50%</span>
-            <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
-            <a href="#about">About Me</a>
-            <a href="#services">Services</a>
-            <a href="#customers">Customers</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<header>
+    <a href="index.html" target="_blank">
+        <button class="transparent-button">
+            <img class="logo" src="images/Game Sprites/Player/Player-Right.png" alt="Baka Games">
+        </button>
+    </a>
+    <nav>
+        <div class="audio-slider-container">
+            <label for="volume-slider">Volume:</label>
+            <input class="volume-slider" id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" onchange="changeVolume(this.value)">
+            <span id="volume-label">50%</span>
+        </div>
+        <a href="#about">About Me</a>
+        <a href="#services">Services</a>
+        <a href="#customers">Customers</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Night Mode</button>
+    </nav>
+</header>
+
+    
+
 
     <!-- Hero Section -->
     <section class="hero">
         <h1 class="flame-text">Games made by real Bakas!</h1>
-        <a href="#gallery">Explore Our Games</a>
+        <a href="#contact">Explore Our Games</a>
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="about-me">
-        <h2>About Me</h2>
+    <h2 class="about-text">About Me</h2>
+<section id="about" class="outer-outline">
+    <div class="about-text">
         <p>Hiya :3 <br><br> Guess this is where I introduce myself *cough* I like ... Spaghetti ... oh noes, I think I already messed up, quick think of something smart to say ... <br><br> "Baka" is my fav word and I am shy. Fav Anime: Re:Zero. I do have VR and I am a Game Programmer :3 I also havent talked to girls alot or interacted with female beings, so I am super nervous around them. My music taste is pretty open. I play many different Games, hope to play some with you :3 <br><br> Since I dont have many friends, I kinda want to make friends as well, but a relationship with a girl, would be nice tho ... Its not like I felt very lonely these 22 years or anything ~ Baka ... I hope we can talk and laugh together :3 What do you mean my introduction was to lon-</p>
+    </div>
+    <!-- Our Mission Section -->
+    <section class="inner-outline">
         <h3>Our Mission</h3>
         <p>To make funny Games and try to do mostly 4th wall breaks, yep you read that right.</p>
     </section>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>Services</h2>
-        <div>
+
+
+   <!-- Services Section -->
+<section id="services" class="services">
+    <h2>Services</h2>
+    <div class="service">
+        <!-- Outline around Programming -->
+        <div class="orange-outline centered">
             <h3>Programming</h3>
-            <p>I am a lonely Game Developer, which tries to find true Love and also a Team, if you are a girl, your mostly welcome ;3</p>
+            <p>I am a lonely Game Developer, which tries to find true Love and also a Team, if you are a girl, you're mostly welcome ;3</p>
         </div>
-        <div>
-            <h3>Drawing</h3>
-            <p>I love drawing things in my own Cartoon style, also I can do small Animations :3</p>
-            <p><strong>Prices:</strong> 
-                <ul>
-                    <li>Picture - 15€</li>
-                    <li>Animation - 25€ with 10 frames, 1€ per additional frame</li>
-                </ul>
-            </p>
+    </div>
+    <!-- Outline around Drawing -->
+    <div class="orange-outline drawing">
+        <h3>Drawing</h3>
+        <!-- Outline around Picture -->
+        <div class="green-outline">
+            <h4>Picture</h4>
+            <p>Price: $15</p>
         </div>
-    </section>
+        <!-- Outline around Animation -->
+<div class="blue-outline">
+    <h4>Animation</h4>
+    <p>Price: $<span id="animation-price">1</span> for <span id="current-frame-number">1</span> frames, $1 per frame</p>
+    <div class="button-container">
+        <button class="modern-button" onclick="increasePrice('animation', 1)">Increase Price by $1</button>
+        <button class="modern-button" onclick="increasePrice('animation', 10)">Increase by 10</button>
+        <button class="modern-button" onclick="increasePrice('animation', 100)">Increase by 100</button>
+        <button class="modern-button" onclick="increasePrice('animation', 1000)">Increase by 1000</button>
+        <button class="modern-button" onclick="increasePrice('animation', 2)">Multiply by 2</button>
+        <button class="modern-button" onclick="resetPrice('animation')">Reset Price to $1</button>
+        <button class="modern-button" onclick="buyNow()">BUY NOW</button>
+    </div>
+    <p>Current Dollar Number: $<span id="current-dollar-number">1</span></p>
+</div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
 
     
 
@@ -69,7 +111,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 1">
+                <img src="images/Game Sprites/Singleplayer/Singleplayer-Orange-Left.png" alt="Customer 1">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -82,7 +124,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 2">
+                <img src="images/Game Sprites/Singleplayer/Singleplayer-Pink-Down.png" alt="Customer 2">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -95,7 +137,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 3">
+                <img src="images/Game Sprites/Singleplayer/Singleplayer-Pink-Up.png" alt="Customer 3">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -108,7 +150,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 4">
+                <img src="images/Game Sprites/Singleplayer/Singleplayer-Blue-Right.png" alt="Customer 4">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -121,7 +163,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 5">
+                <img src="images/Game Sprites/Singleplayer/Singleplayer-Blue-Right.png" alt="Customer 5">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -134,7 +176,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 6">
+                <img src="images/Game Sprites/Objects/Pellet.png" alt="Customer 6">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -147,7 +189,7 @@
         <div class="profile-widget">
             <div class="profile-picture">
                 <!-- Customer profile picture -->
-                <img src="images/Lucca.png" alt="Customer 7">
+                <img src="images/Game Sprites/Player/Player-Down.png" alt="Customer 7">
             </div>
             <div class="profile-info">
                 <!-- Customer profile information -->
@@ -161,14 +203,25 @@
 
 
     <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <h2>Gallery</h2>
-        <!-- Add picture examples of your work here -->
-        <img src="images/Game Sprites/Player/Player-Down.png" alt="Pac-Mouse">
-        <img src="images/Game Sprites/Objects/Pellet.png" alt="Pellet">
-        <img src="images/Game Sprites/Singleplayer/Singleplayer-Red-Up.png" alt="Catghost">
-        <img src="images/Game Sprites/Objects/Pellet.png" alt="Pellet 2">
-    </section>
+<section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <!-- Add picture examples of your work here -->
+    <div class="image-container">
+        <div class="orange-outline">
+            <img src="images/Game Sprites/Player/Player-Down.png" alt="Pac-Mouse">
+        </div>
+        <div class="orange-outline">
+            <img src="images/Game Sprites/Objects/Pellet.png" alt="Pellet">
+        </div>
+        <div class="orange-outline">
+            <img src="images/Game Sprites/Singleplayer/Singleplayer-Red-Up.png" alt="Catghost">
+        </div>
+        <div class="orange-outline">
+            <img src="images/Game Sprites/Objects/Pellet.png" alt="Pellet 2">
+        </div>
+    </div>
+</section>
+
 
     <!-- Contact Section -->
 <section id="contact" class="contact">
@@ -178,11 +231,16 @@
         <p>Email: lucca@mail.de</p>
         <p>Discord: baka_taco</p>
     </div>
+
+    <div>
+        <embed src="http://93.131.51.64/~lucca/pac-mouse/Original-Pacmouse.html" style="width:50%; height: 1200px;"></embed>
+    </div>
+
     <!-- Container for embed and iframe -->
     <div class="embed-iframe-container">
         <!-- Embed -->
         <div class="orange-outline embed">
-            <embed src="http://80.171.112.232/~lucca/pac-mouse/giovanni.html" style="width:100%; height: 600px;"></embed>
+            <embed src="http://93.131.51.64/~lucca/pac-mouse/giovanni.html" style="width:100%; height: 600px;"></embed>
         </div>
         <!-- First iframe -->
         <div class="orange-outline iframe">
